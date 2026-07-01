@@ -4,7 +4,7 @@
 
 ## 🎯 ABOUT
 
-**H4K TR4CK3R** is a powerful phone number and IP tracking system specifically designed for Bangladesh. Built with a cyberpunk/hacker aesthetic, it provides real-time intelligence on phone numbers and IP addresses.
+**H4K TR4CK3R** phone number and IP tracking system specifically designed for Bangladesh. Built with a cyberpunk/hacker aesthetic, it provides real-time intelligence on phone numbers and IP addresses.
 
 ### ⚡ FEATURES
 
@@ -21,7 +21,7 @@
 
 - **Frontend**: HTML5, CSS3, JavaScript (Hacker Theme)
 - **Backend**: Netlify Functions (Serverless)
-- **API**: For Api - to Call me..... whatsapp : https://wa.me/880196601084
+- **API**: For Contract whatsapp:https://wa.me/8801966061084
 - **Hosting**: Netlify
 
 ### 🚀 LIVE DEMO
@@ -43,4 +43,4 @@ npm install
 # Run locally
 netlify dev
 
-Developed By Mr. Abuhurira 😎
+❤️ Developed By Mr. Abuhurira😎☠️
