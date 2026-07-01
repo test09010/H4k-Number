@@ -31,14 +31,15 @@ exports.handler = async function(event, context) {
                      event.headers['x-real-ip'] || 
                      '8.8.8.8';
 
+    // IP2Location API Key
     const API_KEY = '6A9FBF39974DDDB583B73EB85C1A2882';
     const API_URL = `https://api.ip2location.io/?key=${API_KEY}&ip=${clientIP}`;
 
-    // Fetch IP info
+    // Fetch IP info from IP2Location
     const ipResponse = await fetch(API_URL);
     const ipData = await ipResponse.json();
 
-    // Process phone
+    // Process phone number
     const phoneData = processPhone(phone);
 
     return {
@@ -73,8 +74,10 @@ exports.handler = async function(event, context) {
 };
 
 function processPhone(phone) {
+  // Clean phone number
   const cleaned = phone.replace(/[\s\-+()]/g, '');
   
+  // Bangladesh operators database
   const operators = {
     '017': { name: 'Grameenphone', code: 'GP', type: 'GSM' },
     '013': { name: 'Grameenphone', code: 'GP', type: 'GSM' },
@@ -85,6 +88,7 @@ function processPhone(phone) {
     '015': { name: 'Teletalk', code: 'TT', type: 'CDMA' }
   };
 
+  // Validate Bangladesh number
   if (!phone || !/^01[3-9]\d{8}$/.test(cleaned)) {
     return {
       number: phone || '',
