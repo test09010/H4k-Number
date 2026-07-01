@@ -1,36 +1,46 @@
-# Phone & IP Tracker - Bangladesh
+# 🔥 H4K TR4CK3R - BANGLADESH PHONE & IP TRACKER
 
-Real-time phone number and IP tracking system for Bangladesh using IP2Location API.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge/deploy-status)](https://app.netlify.com/sites/your-site/deploys)
 
-## Features
-- ✅ Track Bangladesh phone numbers
-- ✅ Get real-time IP information
-- ✅ Detect mobile operator (GP, Robi, Banglalink, Airtel, Teletalk)
-- ✅ Show location with coordinates
-- ✅ Responsive web interface
+## 🎯 ABOUT
 
-## Live Demo
-[Your Netlify URL]
+**H4K TR4CK3R** is a powerful phone number and IP tracking system specifically designed for Bangladesh. Built with a cyberpunk/hacker aesthetic, it provides real-time intelligence on phone numbers and IP addresses.
 
-## How to Deploy
+### ⚡ FEATURES
 
-### Option 1: Deploy with Netlify (Recommended)
-1. Fork this repository
-2. Go to [Netlify](https://app.netlify.com)
-3. Click "Add new site" → "Import from GitHub"
-4. Select your repository
-5. Click "Deploy"
+- 📱 **Phone Number Tracking** - Track any Bangladesh phone number
+- 🌐 **Real-time IP Intelligence** - Get detailed IP information
+- 🏢 **Operator Detection** - Identifies GP, Robi, Banglalink, Teletalk, Airtel
+- 📍 **Location Mapping** - Shows division and district level location
+- 🗺️ **Geo-coordinates** - Latitude/Longitude with Google Maps integration
+- 🔒 **Proxy Detection** - Detect if IP is using proxy
+- ⚡ **Matrix Rain Effects** - Hacker-style background animation
+- 📊 **Raw Data View** - See complete JSON response
 
-### Option 2: Deploy with Vercel
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run: `vercel`
+### 🛠️ TECHNOLOGIES
 
-### Option 3: Local Development
-1. Install Netlify CLI: `npm i -g netlify-cli`
-2. Run: `netlify dev`
-3. Open: http://localhost:8888
+- **Frontend**: HTML5, CSS3, JavaScript (Hacker Theme)
+- **Backend**: Netlify Functions (Serverless)
+- **API**: For Api - to Call me..... whatsapp : https://wa.me/880196601084
+- **Hosting**: Netlify
 
-For Api - to Call me..... whatsapp : https://wa.me/880196601084
+### 🚀 LIVE DEMO
 
-## License
-MIT
+[https://h4k-tracker.netlify.app](https://h4k-tracker.netlify.app)
+
+## 📦 INSTALLATION
+
+### Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/test09010/H4k.git
+cd H4k/phone-tracker
+
+# Install dependencies
+npm install
+
+# Run locally
+netlify dev
+
+Developed By Mr. Abuhurira 😎
