@@ -1,0 +1,17 @@
+{
+  "name": "h4k-tracker",
+  "version": "2.0.0",
+  "description": "H4K Phone & IP Tracker - Bangladesh",
+  "main": "index.html",
+  "scripts": {
+    "start": "netlify dev",
+    "build": "echo 'No build needed'",
+    "deploy": "netlify deploy --prod"
+  },
+  "keywords": ["phone-tracker", "ip-tracker", "bangladesh"],
+  "author": "Mr. Abuhurira",
+  "license": "MIT",
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+}
