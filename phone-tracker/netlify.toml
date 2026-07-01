@@ -1,21 +1,18 @@
 [build]
-  functions = "netlify/functions"
-  publish = "."
+  functions = "phone-tracker/netlify/functions"
+  publish = "phone-tracker"
 
 [dev]
   command = "netlify dev"
   port = 8888
 
-# Headers
+# CORS Headers
 [[headers]]
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Headers = "Content-Type"
     Access-Control-Allow-Methods = "GET, POST, OPTIONS"
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "no-referrer"
 
 # API Routes
 [[redirects]]
@@ -29,7 +26,6 @@
   to = "/index.html"
   status = 404
 
-# Functions
 [functions]
   node_bundler = "esbuild"
 
