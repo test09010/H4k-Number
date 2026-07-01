@@ -1,0 +1,49 @@
+# netlify.toml
+
+[build]
+  # Netlify Functions ফোল্ডার
+  functions = "netlify/functions"
+  
+  # পাবলিক ফোল্ডার (HTML, CSS, JS)
+  publish = "."
+
+[dev]
+  # লোকাল ডেভেলপমেন্ট কমান্ড
+  command = "netlify dev"
+  
+  # পোর্ট
+  port = 8888
+
+# CORS সেটিংস (ক্রস-অরিজিন রিকোয়েস্টের জন্য)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+
+# রিডাইরেক্ট সেটিংস
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# 404 পেজ রিডাইরেক্ট
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# Functions এর জন্য এনভায়রনমেন্ট ভেরিয়েবল
+[functions]
+  node_bundler = "esbuild"
+
+# নির্দিষ্ট ফাংশনের জন্য সেটিংস
+[functions.track]
+  node_bundler = "esbuild"
+  external_node_modules = ["fetch"]
+
+# বিল্ড সেটিংস
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
