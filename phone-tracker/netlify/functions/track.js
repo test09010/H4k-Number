@@ -1,43 +1,79 @@
-// api/track.js
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+// netlify/functions/track.js
+exports.handler = async function(event, context) {
+  // Handle CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+      },
+      body: ''
+    };
   }
 
-  const { phone } = req.body;
-  const API_KEY = '6A9FBF39974DDDB583B73EB85C1A2882';
-  
-  // Get client IP
-  const clientIP = req.headers['x-forwarded-for'] || 
-                   req.connection.remoteAddress || 
-                   '8.8.8.8';
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
+  }
 
   try {
-    // Get IP info
-    const ipResponse = await fetch(
-      `https://api.ip2location.io/?key=${API_KEY}&ip=${clientIP}`
-    );
+    const { phone } = JSON.parse(event.body || '{}');
+    const clientIP = event.headers['x-forwarded-for'] || 
+                     event.headers['client-ip'] || 
+                     event.headers['x-real-ip'] || 
+                     '8.8.8.8';
+
+    const API_KEY = '6A9FBF39974DDDB583B73EB85C1A2882';
+    const API_URL = `https://api.ip2location.io/?key=${API_KEY}&ip=${clientIP}`;
+
+    // Fetch IP info
+    const ipResponse = await fetch(API_URL);
     const ipData = await ipResponse.json();
 
     // Process phone
     const phoneData = processPhone(phone);
 
-    res.status(200).json({
-      phone: phoneData,
-      ip: {
-        current: clientIP,
-        info: ipData
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
       },
-      timestamp: new Date().toISOString()
-    });
+      body: JSON.stringify({
+        phone: phoneData,
+        ip: {
+          current: clientIP,
+          info: ipData
+        },
+        timestamp: new Date().toISOString()
+      })
+    };
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error:', error);
+    return {
+      statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        error: error.message || 'Internal server error',
+        success: false 
+      })
+    };
   }
-}
+};
 
 function processPhone(phone) {
   const cleaned = phone.replace(/[\s\-+()]/g, '');
-  const isValid = /^01[3-9]\d{8}$/.test(cleaned);
   
   const operators = {
     '017': { name: 'Grameenphone', code: 'GP', type: 'GSM' },
@@ -49,11 +85,11 @@ function processPhone(phone) {
     '015': { name: 'Teletalk', code: 'TT', type: 'CDMA' }
   };
 
-  if (!isValid) {
+  if (!phone || !/^01[3-9]\d{8}$/.test(cleaned)) {
     return {
-      number: phone,
+      number: phone || '',
       valid: false,
-      error: 'Invalid Bangladesh phone number'
+      error: phone ? 'Invalid Bangladesh phone number' : 'No phone number provided'
     };
   }
 
