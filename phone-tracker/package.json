@@ -1,0 +1,17 @@
+{
+  "name": "phone-tracker-bd",
+  "version": "1.0.0",
+  "description": "Phone & IP Tracker for Bangladesh",
+  "main": "index.html",
+  "scripts": {
+    "start": "netlify dev",
+    "build": "echo 'No build needed'",
+    "deploy": "netlify deploy --prod"
+  },
+  "keywords": ["phone-tracker", "ip-tracker", "bangladesh"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+}
