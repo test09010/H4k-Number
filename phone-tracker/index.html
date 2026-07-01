@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H4k Number Tracker - Bangladesh</title>
+    <title>H4k Attrac..</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
@@ -88,7 +88,7 @@
             margin-top: 15px;
             padding: 8px 20px;
             background: rgba(0, 255, 65, 0.05);
-            border: 1px solid rgba(0, 255, 65, 0.2);
+            border: 1px solid rgba(0bo55, 65, 0.2);
             border-radius: 5px;
             display: inline-block;
             font-size: 0.8rem;
@@ -454,7 +454,7 @@
         .footer {
             text-align: center;
             padding: 30px 0;
-            border-top: 1px solid rgba(0, 255, 65, 0.1);
+            bor: 1px solid rgba(0, 255, 65, 0.1);
             margin-top: 30px;
             color: rgba(0, 255, 65, 0.3);
             font-size: 0.8rem;
@@ -486,6 +486,8 @@
             font-size: 0.8rem;
             color: rgba(0, 255, 65, 0.7);
             line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-all;
         }
 
         /* Glitch Text Effect */
@@ -718,7 +720,7 @@
         <div class="footer">
             <p>
                 <span class="heart">❤</span> 
-                H4K TR4CK3R v2.0 | POWERED BY IP2LOCATION 
+                H4K TR4CK3R v2.0 | POWERED BY Mr.Abuhurira 😎☠️
                 <span class="heart">❤</span>
             </p>
             <p style="margin-top: 5px; font-size: 0.7rem;">
@@ -801,6 +803,7 @@
             updateStatus('TRACKING...');
 
             try {
+                // Netlify Functions endpoint - ঠিক আছে
                 const response = await fetch('/.netlify/functions/track', {
                     method: 'POST',
                     headers: {
